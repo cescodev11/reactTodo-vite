@@ -1,20 +1,22 @@
-import React from "react";
-import styles from "./task.module.css";
-const index = () => {
-  return (
-    <section className={styles.tasks}>
-      <header className={styles.header}>
-        <div>
-          <p>Create Task</p>
-          <span>18</span>
-        </div>
-        <div>
-          <p>Completed Task</p>
-          <span> 1 of 10 </span>
-        </div>
-      </header>
-    </section>
-  );
-};
+/* eslint-disable react/prop-types */
+import styles from './task.module.css';
+import { BsFillCheckCircleFill } from 'react-icons/bs';
+import { TbTrash } from 'react-icons/tb';
 
-export default index;
+export function Task({ task, onDelete, onComplete }) {
+  return (
+    <div className={styles.task}>
+      <button className={styles.checkContainer} onClick={() => onComplete(task.id)}>
+        {task.isCompleted ? <BsFillCheckCircleFill /> : <div />}
+      </button>
+
+      <p className={task.isCompleted ? styles.textCompleted : ""}>
+        {task.title}
+      </p>
+
+      <button className={styles.deleteButton} onClick={() => onDelete(task.id)}>
+        <TbTrash size={20} />
+      </button>
+    </div>
+  )
+}

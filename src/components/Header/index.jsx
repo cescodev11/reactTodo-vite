@@ -1,18 +1,38 @@
+// import todoLogo from '../../assets/todoLogo.svg';
 import styles from "./header.module.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-const Header = () => {
+import { useState } from "react";
+
+export function Header({ handleAddTask }) {
+  const [title, setTitle] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    handleAddTask(title);
+    setTitle("");
+  }
+
+  function onChangeTitle(event) {
+    setTitle(event.target.value);
+  }
+
   return (
     <header className={styles.header}>
-      <p>Day to Day List</p>
-      <form className={styles.newTaskForm}>
-        <input placeholder="Add a New task" type="text" />
+      {/* <img src={todoLogo} /> */}
+      <h1>TODO List:</h1>
+
+      <form onSubmit={handleSubmit} className={styles.newTaskForm}>
+        <input
+          placeholder="Add a new task"
+          type="text"
+          onChange={onChangeTitle}
+          value={title}
+        />
         <button>
-          Create
-          <AiOutlinePlusCircle size={20}/>
+          Create <AiOutlinePlusCircle size={20} />
         </button>
       </form>
     </header>
   );
-};
-
-export default Header;
+}
