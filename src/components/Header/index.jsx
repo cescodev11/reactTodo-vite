@@ -2,7 +2,7 @@
 import styles from "./header.module.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useState } from "react";
-
+import todoLogo from "../../assets/ToDo List.png";
 export function Header({ handleAddTask }) {
   const [title, setTitle] = useState("");
 
@@ -19,9 +19,7 @@ export function Header({ handleAddTask }) {
 
   return (
     <header className={styles.header}>
-      {/* <img src={todoLogo} /> */}
-      <h1>TODO List:</h1>
-
+      <img src={todoLogo} width={100} className={styles.logo} />
       <form onSubmit={handleSubmit} className={styles.newTaskForm}>
         <input
           placeholder="Add a new task"

@@ -7,7 +7,9 @@
     position: relative;
 
 }
-
+.logo{ 
+    border-radius: 20px;
+}
 .newTaskForm { 
     position: absolute;
     height: 54px;
